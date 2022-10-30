@@ -5,4 +5,4 @@ Used in coding:
 - django 4.1.2;
 - python-dotenv;
 - PyCharm;
-- git.
+- git and GitHub.

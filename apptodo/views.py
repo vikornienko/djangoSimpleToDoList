@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from .models import Todo
+from .forms import TodoForm
 
 def todo_list(request):
     todos = Todo.objects.all()
@@ -15,6 +16,16 @@ def todo_detail(request, id):
         "todo": todo
     }
     return render(request, "detail.html", context_page)
+
+def todo_create(request):
+    form = TodoForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('/')
+    context_page = {
+        "form": form
+    }
+    return render(request, "create.html", context_page)
 
 
 
