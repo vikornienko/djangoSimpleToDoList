@@ -1,6 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
+from .models import Todo
 
 def todo_list(request):
-    return render(request, 'index.html')
+    todos = Todo.objects.all()
+    context_page = {
+        "todo_list": todos
+    }
+    return render(request, 'index.html', context_page)
 

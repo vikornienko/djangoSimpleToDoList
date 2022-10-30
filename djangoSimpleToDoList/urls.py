@@ -18,10 +18,9 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
-from apptodo.views import todo_list
 
 urlpatterns = [
-    path('', todo_list),
+    path('', include('apptodo.urls', namespace='todos')),
     path('admin/', admin.site.urls),
 ]
 

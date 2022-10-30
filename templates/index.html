@@ -7,6 +7,22 @@
 </head>
 <body>
 <p>Hello, World from html file!</p>
+
+{% if request.user.is_authenticated %}
+    <p>Hello {{ request.user.username }}!</p>
+{% else %}
+    <p>Hello anounimuos user!</p>
+
+{% endif %}
+<ul>
+    {% for todo in todo_list %}
+        <li>{{ todo.name }}, it's due: {{ todo.due_date }}</li>
+
+    {% endfor %}
+
+</ul>
+
+
 <script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
