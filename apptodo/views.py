@@ -9,3 +9,12 @@ def todo_list(request):
     }
     return render(request, 'index.html', context_page)
 
+def todo_detail(request, id):
+    todo = Todo.objects.get(id=id)
+    context_page = {
+        "todo": todo
+    }
+    return render(request, "detail.html", context_page)
+
+
+
