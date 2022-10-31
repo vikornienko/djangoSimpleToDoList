@@ -1,21 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>ToDo detail</title>
-    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
-</head>
-<body>
+{% extends "base.html" %}
 
-{% if request.user.is_authenticated %}
-    <p>Hello {{ request.user.username }}!</p>
-{% else %}
-    <p>Hello anounimuos user!</p>
-{% endif %}
-<p>The todo name is: {{ todo.name }}</p>
-<br>
-<p>The todo date is: {{ todo.due_date }}</p>
+{% block content %}
 
-<script type="text/javascript" src="../static/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    <div class="col-4 offset-4">
+        <p class="text-center">
+            <a href="/" class="btn btn-secondary">Go home</a>
+        </p>
+
+        <div class="card mt-3">
+            <div class="card-header">
+                <a href="/{{ todo.id }}"><h4>The todo name is: {{ todo.name }}</h4></a>
+            </div>
+            <div class="card-body">
+                <p>It's due: {{ todo.due_date }}</p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-secondary" href="/{{ todo.id }}/update">Update this todo</a>
+                <br>
+                <br>
+                <a class="btn btn-secondary" href="/{{ todo.id }}/delete">Delete this todo</a>
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

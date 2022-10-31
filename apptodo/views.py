@@ -27,5 +27,19 @@ def todo_create(request):
     }
     return render(request, "create.html", context_page)
 
+def todo_update(request, id):
+    todo = Todo.objects.get(id=id)
+    form = TodoForm(request.POST or None, instance=todo)
+    if form.is_valid():
+        form.save()
+        return redirect('/')
+    context_page = {"form": form}
+    return render(request, "update.html", context_page)
+
+def todo_delete(request, id):
+    todo = Todo.objects.get(id=id)
+    todo.delete()
+    return redirect('/')
+
 
 
